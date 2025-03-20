@@ -9,7 +9,7 @@
 <body class="bg-gray-100 font-sans text-gray-900">
     <div class="border-2 container mx-auto p-6 max-w-full bg-white shadow-md rounded-lg mt-10">
         <h1 class="text-3xl font-semibold text-center mb-6">Dodaj Trošak</h1>
-        <form  action="/add-expense" method="POST">
+        <form  action="/expenses/addExpense" method="POST">
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Naziv Troška:</label>
                 <input type="text" id="name" name="name" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
@@ -37,5 +37,16 @@
             </div>
         </form>
     </div>
+        {{#if error_validation}}
+        <p Class="text-red-600 mt-3 text-center">Dogodila se greška u provjeri podataka!</p>
+        {{/if}}
+
+        {{#if error_database}}
+        <p class="text-red-600 mt-3 text-center">Dogodila se greška prilikom spremanja u bazu podataka!</p>
+        {{/if}}
+
+        {{#if success}}
+        <p class="text-green-600 mt-3 text-center">Soba je uspješno dodana!</p>
+        {{/if}}
 </body>
 </html>
